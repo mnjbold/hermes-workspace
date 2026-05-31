@@ -17,7 +17,7 @@ WORKDIR /app
 
 # Install deps (cache-friendly: copy only manifests first)
 COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml .npmrc ./
-RUN pnpm install --frozen-lockfile
+RUN echo "{"electron":"*","esbuild":"*","unrs-resolver":"*","electron-winstaller":"*"}" > .pnpm-approved-builds.json && pnpm install --frozen-lockfile
 
 # Copy sources and build
 COPY . .
